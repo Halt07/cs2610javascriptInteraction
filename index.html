@@ -4,51 +4,52 @@
 <head>
     <meta charset="utf-8">
     <style type="text/css">
-	
-	.fib {
-		background-color: rgba(0,0,255,0.1);
-	//}
-	//#fib {
+	#fib {
 		width: 100%;
                 display: inline-block;
+	}
+	.fib {
+		background-color: rgba(0,0,255,0.1);
 	}
         .fib-left {
                         float: left;
                         display: inline-block;
                         width: 50%;
-			//margin-right: 2px;
+			
         }
         .fib-right {
                         float: right;
                         display: inline-block;
                         width: 50%;
-			//margin-left: 2px;
         }
-	.pell {
+	#pell {
 		width: 100%;
                 display: inline-block;
+	}
+	.pell{
+		background-color: rgba(0,255,0,0.1);
 	}
 	.pell-left {
                         float: left;
                         display: inline-block;
                         width: 50%;
-			margin-right:2px;
         }
         .pell-right {
                         float: right;
                         display: inline-block;
                         width: 50%;
-			margin-left:2px;
         }
-	.trib {
+	#trib {
 		width: 100%;
                 display: inline-block;
+	}
+	.trib{
+		background-color:rgba(255,0,255,0.1);
 	}
 	.trib-left {
                         float: left;
                         display: inline-block;
                         width: 33%;
-			margin-right:2px;
         }
         .trib-mid {
                         margin: 0 auto;
@@ -59,7 +60,6 @@
                         float: right;
                         display: inline-block;
                         width: 33%;
-			margin-left:2px;
         }
     .shadowed {
         text-shadow: 1px 1px 2px black;
@@ -228,19 +228,19 @@ function tribHelper(n) {
 var fib = function (n, node) {
 	var tree = fibHelper(n)
 	node.appendChild(tree.html);
-	//node.setAttribute("id", "fib");
+	node.setAttribute("id", "fib");
 }
 
 var pell = function (n, node) {
 	var tree = pellHelper(n)
 	node.appendChild(tree.html);
-	//node.setAttribute("id", "pell");
+	node.setAttribute("id", "pell");
 }
 
 var trib = function (n, node) {
 	var tree = tribHelper(n)
 	node.appendChild(tree.html);
-	//node.setAttribute("id", "trib");
+	node.setAttribute("id", "trib");
 }
 
 var style = document.createElement('style');
