@@ -69,4 +69,4 @@ var pell = function (n, node) {
 }
 
 fib(6, document.querySelector('.red'))
-pell(6, document.querySelector(.yellow))
+pell(6, document.querySelector('.yellow'))
