@@ -4,12 +4,13 @@
 <head>
     <meta charset="utf-8">
     <style type="text/css">
-	#fib {
-		width: 100%;
-                display: inline-block;
-	}
+	
 	.fib {
 		background-color: rgba(0,0,255,0.1);
+	//}
+	//#fib {
+		width: 100%;
+                display: inline-block;
 	}
         .fib-left {
                         float: left;
@@ -128,9 +129,12 @@
 	} 
 	else {
 		var left = fibHelper(n - 1);
-		left.html.setAttribute("class", "fib-left");
+		var classs = left.html.getAttribute("class");
+		left.html.setAttribute("class", classs + " fib-left");
+		
 		var right = fibHelper(n - 2);
-		right.html.setAttribute("class", "fib-right");
+		classs = right.html.getAttribute("class");
+		right.html.setAttribute("class", classs + " fib-right");
 		
 		value = left.value + right.value;
 		var p = document.createElement('p');
@@ -162,9 +166,11 @@ function pellHelper(n) {
 	} 
 	else {
 		var left = pellHelper(n - 1);
-		left.html.setAttribute("class", "pell-left");
+		var classs = left.html.getAttribute("class");
+		left.html.setAttribute("class", classs + " pell-left");
 		var right = pellHelper(n - 2);
-		right.html.setAttribute("class", "pell-right");
+		classs = right.html.getAttribute("class");
+		right.html.setAttribute("class", classs + " pell-right");
 		
 		value = (2*left.value) + right.value;
 		var p = document.createElement('p');
@@ -196,11 +202,16 @@ function tribHelper(n) {
 	} 
 	else {
 		var left = tribHelper(n - 1);
-		left.html.setAttribute("class", "trib-left");
+		var classs = left.html.getAttribute("class");
+		left.html.setAttribute("class", classs + " trib-left");
+		
 		var mid = tribHelper(n - 2);
-		mid.html.setAttribute("class", "trib-mid");
+		classs = mid.html.getAttribute("class");
+		mid.html.setAttribute("class", classs + " trib-mid");
+		
 		var right = tribHelper(n - 3);
-		right.html.setAttribute("class", "trib-right");
+		classs = right.html.getAttribute("class");
+		right.html.setAttribute("class", classs + " trib-right");
 		
 		value = left.value + mid.value + right.value;
 		var p = document.createElement('p');
@@ -217,17 +228,19 @@ function tribHelper(n) {
 var fib = function (n, node) {
 	var tree = fibHelper(n)
 	node.appendChild(tree.html);
-	node.setAttribute("id", "fib");
+	//node.setAttribute("id", "fib");
 }
 
 var pell = function (n, node) {
 	var tree = pellHelper(n)
 	node.appendChild(tree.html);
+	//node.setAttribute("id", "pell");
 }
 
 var trib = function (n, node) {
 	var tree = tribHelper(n)
 	node.appendChild(tree.html);
+	//node.setAttribute("id", "trib");
 }
 
 var style = document.createElement('style');
