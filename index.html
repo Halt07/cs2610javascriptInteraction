@@ -111,6 +111,7 @@ function pellHelper(n) {
 	var value;
 	var div = document.createElement('div');
 	div.setAttribute("class", "pell");
+	
 	// leaf nodes aka. base case
 	if (n < 2) {
 		if (n === 0) {
@@ -146,12 +147,12 @@ var fib = function (n, node) {
 }
 
 var pell = function (n, node) {
-	var treepell = pellHelper(n)
-	node.appendChild(treepell.html)
+	var tree = pellHelper(n)
+	node.appendChild(tree.html)
 }
 
-fib(6, document.querySelector('.red'))
-pell(6, document.querySelector('.yellow'))
+fib(6, document.querySelector('.red'));
+pell(6, document.querySelector('.yellow'));
 </script>
 </body>
 </html>
