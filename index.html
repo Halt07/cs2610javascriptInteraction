@@ -4,22 +4,24 @@
 <head>
     <meta charset="utf-8">
     <style type="text/css">
-	.fib {
+	#fib {
 		width: 100%;
                 display: inline-block;
-		background-color:rgba(0,0,255,0.1);
+	}
+	.fib {
+		background-color: rgba(0,0,255,0.1);
 	}
         .fib-left {
                         float: left;
                         display: inline-block;
                         width: 50%;
-			margin-right:2px;
+			margin-right: 2px;
         }
         .fib-right {
                         float: right;
                         display: inline-block;
                         width: 50%;
-			margin-left:2px;
+			margin-left: 2px;
         }
 	.pell {
 		width: 100%;
@@ -214,19 +216,23 @@ function tribHelper(n) {
 
 var fib = function (n, node) {
 	var tree = fibHelper(n)
-	node.appendChild(tree.html)
+	node.appendChild(tree.html);
+	node.setAttribute("id", "fib");
 }
 
 var pell = function (n, node) {
 	var tree = pellHelper(n)
-	node.appendChild(tree.html)
+	node.appendChild(tree.html);
 }
 
 var trib = function (n, node) {
 	var tree = tribHelper(n)
-	node.appendChild(tree.html)
+	node.appendChild(tree.html);
 }
 
+var style = document.createElement('style');
+style
+document.querySelector('body');
 fib(6, document.querySelector('.red'));
 pell(6, document.querySelector('.yellow'));
 trib(6, document.querySelector('.blue'));	    
