@@ -125,12 +125,12 @@ function pellHelper(n) {
 		div.appendChild(p)
 	} 
 	else {
-		var left = 2*pellHelper(n - 1);
+		var left = pellHelper(n - 1);
 		left.html.setAttribute("class", "pell-left");
 		var right = pellHelper(n - 2);
 		right.html.setAttribute("class", "pell-right");
 		
-		value = left.value + right.value;
+		value = (2*left.value) + right.value;
 		var p = document.createElement('p');
 		p.textContent = 'Pell(' + n + ') = ' + value;
 		div.appendChild(p);
