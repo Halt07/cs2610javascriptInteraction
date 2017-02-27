@@ -1,6 +1,8 @@
 function fibHelper(n) {
 	var value;
 	var div = document.createElement('div');
+	div.setAttribute("class", "fib");
+	
 	// leaf nodes aka. base case
 	if (n < 2) {
 		if (n === 0) {
@@ -15,7 +17,9 @@ function fibHelper(n) {
 	} 
 	else {
 		var left = fibHelper(n - 1);
+		left.html.setAttribute("class", "fib-left");
 		var right = fibHelper(n - 2);
+		right.html.setAttribute("class", "fib-right");
 		
 		value = left.value + right.value;
 		var p = document.createElement('p');
@@ -31,6 +35,7 @@ function fibHelper(n) {
 function pellHelper(n) {
 	var value;
 	var div = document.createElement('div');
+	div.setAttribute("class", "pell");
 	// leaf nodes aka. base case
 	if (n < 2) {
 		if (n === 0) {
@@ -44,16 +49,18 @@ function pellHelper(n) {
 		div.appendChild(p)
 	} 
 	else {
-		var leftpell = 2*pellHelper(n - 1);
-		var rightpell = pellHelper(n - 2);
+		var left = 2*pellHelper(n - 1);
+		left.html.setAttribute("class", "pell-left");
+		var right = pellHelper(n - 2);
+		right.html.setAttribute("class", "pell-right");
 		
-		value = leftpell.value + rightpell.value;
+		value = left.value + right.value;
 		var p = document.createElement('p');
 		p.textContent = 'Pell(' + n + ') = ' + value;
 		div.appendChild(p);
 		
-		div.appendChild(leftpell.html);
-		div.appendChild(rightpell.html);
+		div.appendChild(left.html);
+		div.appendChild(right.html);
 	}
 	return { 'value': value, 'html': div };
 }
