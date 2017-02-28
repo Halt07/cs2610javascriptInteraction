@@ -195,6 +195,7 @@ style.textContent = "#fib {"+
 	".full-width {" +
 	"		width: 100%;"+
         "        	display: inline-block;"+
+	"		margin: 0 auto;"+
 	"}"+
     	".stuff-box {"+
         "                font-family: 'helvetica neue', 'helvetica', 'sans-serif';"+
