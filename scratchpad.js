@@ -193,9 +193,8 @@ style.textContent = "#fib {"+
         "        color:       white;"+
     	"}"+
 	".center {" +
-	"		width: 100%;"+
         "        	display: inline-block;"+
-	"		padding: 50%;"+
+	"		float: auto;"+
 	"		margin: 0 auto;"+
 	"}"+
     	".stuff-box {"+
