@@ -195,7 +195,7 @@ style.textContent = "#fib {"+
 	".center {" +
 	"		width: 100%;"+
         "        	display: inline-block;"+
-	"		padding: 0 auto;"+
+	"		padding: 50%;"+
 	"		margin: 0 auto;"+
 	"}"+
     	".stuff-box {"+
