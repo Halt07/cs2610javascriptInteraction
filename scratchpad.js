@@ -17,9 +17,12 @@ function fibHelper(n) {
 	} 
 	else {
 		var left = fibHelper(n - 1);
-		left.html.setAttribute("class", "fib-left");
+		var classs = left.html.getAttribute("class");
+		left.html.setAttribute("class", classs + " fib-left");
+		
 		var right = fibHelper(n - 2);
-		right.html.setAttribute("class", "fib-right");
+		classs = right.html.getAttribute("class");
+		right.html.setAttribute("class", classs + " fib-right");
 		
 		value = left.value + right.value;
 		var p = document.createElement('p');
@@ -36,6 +39,7 @@ function pellHelper(n) {
 	var value;
 	var div = document.createElement('div');
 	div.setAttribute("class", "pell");
+	
 	// leaf nodes aka. base case
 	if (n < 2) {
 		if (n === 0) {
@@ -49,12 +53,14 @@ function pellHelper(n) {
 		div.appendChild(p)
 	} 
 	else {
-		var left = 2*pellHelper(n - 1);
-		left.html.setAttribute("class", "pell-left");
+		var left = pellHelper(n - 1);
+		var classs = left.html.getAttribute("class");
+		left.html.setAttribute("class", classs + " pell-left");
 		var right = pellHelper(n - 2);
-		right.html.setAttribute("class", "pell-right");
+		classs = right.html.getAttribute("class");
+		right.html.setAttribute("class", classs + " pell-right");
 		
-		value = left.value + right.value;
+		value = (2*left.value) + right.value;
 		var p = document.createElement('p');
 		p.textContent = 'Pell(' + n + ') = ' + value;
 		div.appendChild(p);
@@ -64,16 +70,174 @@ function pellHelper(n) {
 	}
 	return { 'value': value, 'html': div };
 }
+	    
+function tribHelper(n) {
+	var value;
+	var div = document.createElement('div');
+	div.setAttribute("class", "trib");
+	
+	// leaf nodes aka. base case
+	if (n < 3) {
+		if (n < 2) {
+			value = 0;
+		} 
+		else if (n === 2) {
+			value = 1;
+		}
+		var p = document.createElement('p');
+  		p.textContent = 'Trib(' + n + ') = ' + value;
+		div.appendChild(p)
+	} 
+	else {
+		var left = tribHelper(n - 1);
+		var classs = left.html.getAttribute("class");
+		left.html.setAttribute("class", classs + " trib-left");
+		
+		var mid = tribHelper(n - 2);
+		classs = mid.html.getAttribute("class");
+		mid.html.setAttribute("class", classs + " trib-mid");
+		
+		var right = tribHelper(n - 3);
+		classs = right.html.getAttribute("class");
+		right.html.setAttribute("class", classs + " trib-right");
+		
+		value = left.value + mid.value + right.value;
+		var p = document.createElement('p');
+		p.textContent = 'Trib(' + n + ') = ' + value;
+		div.appendChild(p);
+		
+		div.appendChild(left.html);
+		div.appendChild(mid.html);
+		div.appendChild(right.html);
+	}
+	return { 'value': value, 'html': div };
+}
 
 var fib = function (n, node) {
 	var tree = fibHelper(n)
-	node.appendChild(tree.html)
+	node.appendChild(tree.html);
+	node.setAttribute("id", "fib");
 }
 
 var pell = function (n, node) {
-	var treepell = pellHelper(n)
-	node.appendChild(treepell.html)
+	var tree = pellHelper(n)
+	node.appendChild(tree.html);
+	node.setAttribute("id", "pell");
 }
 
-fib(6, document.querySelector('.red'))
-pell(6, document.querySelector('.yellow'))
+var trib = function (n, node) {
+	var tree = tribHelper(n)
+	node.appendChild(tree.html);
+	node.setAttribute("id", "trib");
+}
+
+var style = document.createElement('style');
+style.textContent = "#fib {"+
+	"	width: 100%;"+
+        "        display: inline-block;"+
+	"}"+
+	".fib {"+
+	"	background-color: rgba(255,102,0,0.1);"+
+	"}"+
+        ".fib-left {"+
+        "                float: left;"+
+        "                display: inline-block;"+
+        "                width: 50%;"+
+        "}"+
+        ".fib-right {"+
+        "                float: right;"+
+        "                display: inline-block;"+
+        "                width: 50%;"+
+        "}"+
+	"#pell {"+
+	"	width: 100%;"+
+        "        display: inline-block;"+
+	"}"+
+	".pell{"+
+	"	background-color: rgba(0,255,0,0.1);"+
+	"}"+
+	".pell-left {"+
+        "                float: left;"+
+        "                display: inline-block;"+
+        "                width: 50%;"+
+        "}"+
+        ".pell-right {"+
+        "                float: right;"+
+        "                display: inline-block;"+
+        "                width: 50%;"+
+        "}"+
+	"#trib {"+
+	"	width: 100%;"+
+        "        display: inline-block;"+
+	"}"+
+	".trib{"+
+	"	background-color:rgba(255,0,255,0.1);"+
+	"}"+
+	".trib-left {"+
+        "                float: left;"+
+        "                display: inline-block;"+
+        "                width: 33%;"+
+        "}"+
+        ".trib-mid {"+
+        "                margin: 0 auto;"+
+        "                display: inline-block;"+
+        "                width: 33%;"+
+        "}"+
+        ".trib-right {"+
+        "                float: right;"+
+        "                display: inline-block;"+
+        "                width: 33%;"+
+        "}"+
+    	".shadowed {"+
+        "	text-shadow: 1px 1px 2px black;"+
+        "        color:       white;"+
+    	"}"+
+    	".stuff-box {"+
+        "                font-family: 'helvetica neue', 'helvetica', 'sans-serif';"+
+        "                letter-spacing: 1px;"+
+        "                text-transform: capitalize;"+
+        "                text-align: center;"+
+        "                padding: 3px 10px;"+
+        "                margin: 10px;"+
+        "                cursor: pointer;"+
+        "                border-radius: 10px;"+
+        "                border-width: 2px;"+
+        "                border-style: solid;"+
+    	"}"+
+        ".red {"+
+        "        border-color: rgb(255,0,0);"+
+        "        background:   rgb(180,60,60);"+
+        "        box-shadow: 1px 1px 2px rgba(200,0,0,0.4);"+
+        "}"+
+        ".yellow {"+
+        "        border-color: rgb(200,200,0);"+
+        "        background:   rgb(150,150,40);"+
+        "        box-shadow: 1px 1px 2px rgba(175,175,0,0.4);"+
+        "}"+
+        ".blue {"+
+        "        border-color: rgb(0,0,255);"+
+        "        background:   rgb(60,60,180);"+
+        "        box-shadow: 1px 1px 2px rgba(0,0,200,0.4);"+
+        "}"+
+        ".green {"+
+        "        border-color: rgb(0,255,0);"+
+        "        background:   rgb(60,180,60);"+
+        "        box-shadow: 1px 1px 2px rgba(0,200,0,0.4);"+
+        "}";
+document.querySelector('body').appendChild(style);
+var box = document.createElement('div');
+	box.setAttribute("class", "stuff-box red shadowed");
+	document.querySelector('body').appendChild(box);
+box = document.createElement('div');
+	box.setAttribute("class", "stuff-box yellow shadowed");
+	document.querySelector('body').appendChild(box);
+box = document.createElement('div');
+	box.setAttribute("class", "stuff-box blue shadowed");
+	document.querySelector('body').appendChild(box);
+box = document.createElement('div');
+	box.setAttribute("class", "stuff-box green shadowed");
+	document.querySelector('body').appendChild(box);
+	    
+fib(11, document.querySelector('.red'));
+pell(11, document.querySelector('.yellow'));
+trib(11, document.querySelector('.blue'));
