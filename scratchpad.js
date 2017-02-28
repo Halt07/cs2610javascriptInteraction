@@ -239,6 +239,7 @@ var addBox = function (color) {
 
 var addAnchor = function(url, text) {
 	var cell = document.createElement('td')
+	cell.setAttribute("class", "full-width");
 		var anchor = document.createElement('a');
 		anchor.setAttribute("href", url);
 		anchor.textContent = text;
