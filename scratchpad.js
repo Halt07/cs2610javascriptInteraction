@@ -225,19 +225,17 @@ style.textContent = "#fib {"+
         "        box-shadow: 1px 1px 2px rgba(0,200,0,0.4);"+
         "}";
 document.querySelector('body').appendChild(style);
-var box = document.createElement('div');
-	box.setAttribute("class", "stuff-box red shadowed");
+
+var addBox = function (color) {
+	var box = document.createElement('div');
+	box.setAttribute("class", "stuff-box " + color + " shadowed");
 	document.querySelector('body').appendChild(box);
-box = document.createElement('div');
-	box.setAttribute("class", "stuff-box yellow shadowed");
-	document.querySelector('body').appendChild(box);
-box = document.createElement('div');
-	box.setAttribute("class", "stuff-box blue shadowed");
-	document.querySelector('body').appendChild(box);
-box = document.createElement('div');
-	box.setAttribute("class", "stuff-box green shadowed");
-	document.querySelector('body').appendChild(box);
+}
 	    
+addBox("red");
+addBox("yellow");
+addBox("blue");
+addBox("green");
 fib(11, document.querySelector('.red'));
 pell(11, document.querySelector('.yellow'));
 trib(11, document.querySelector('.blue'));
