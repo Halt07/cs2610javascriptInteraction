@@ -192,9 +192,10 @@ style.textContent = "#fib {"+
         "	text-shadow: 1px 1px 2px black;"+
         "        color:       white;"+
     	"}"+
-	".full-width {" +
+	".center {" +
 	"		width: 100%;"+
         "        	display: inline-block;"+
+	"		padding: 0 auto;"+
 	"		margin: 0 auto;"+
 	"}"+
     	".stuff-box {"+
@@ -254,7 +255,7 @@ addBox("blue");
 addBox("green");
 
 var linkTable = document.createElement('table');
-linkTable.setAttribute("class", "full-width");
+linkTable.setAttribute("class", "center");
 	var row = document.createElement('tr');
 	linkTable.appendChild(row);
 document.querySelector('.green').appendChild(linkTable);
