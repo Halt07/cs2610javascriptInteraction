@@ -168,7 +168,7 @@ style.textContent = "#fib {"+
         "}"+
 	"#trib {"+
 	"	width: 100%;"+
-        "        display: inline-block;"+
+        "       display: inline-block;"+
 	"}"+
 	".trib{"+
 	"	background-color:rgba(255,0,255,0.1);"+
@@ -192,6 +192,10 @@ style.textContent = "#fib {"+
         "	text-shadow: 1px 1px 2px black;"+
         "        color:       white;"+
     	"}"+
+	".full-width {" +
+	"		width: 100%;"+
+        "        	display: inline-block;"+
+	"}"+
     	".stuff-box {"+
         "                font-family: 'helvetica neue', 'helvetica', 'sans-serif';"+
         "                letter-spacing: 1px;"+
@@ -233,10 +237,12 @@ var addBox = function (color) {
 }
 
 var addAnchor = function(url, text) {
-	var anchor = document.createElement('a');
-	anchor.setAttribute("href", url);
-	anchor.textContent = text;
-	document.querySelector('.green').appendChild(anchor);
+	var cell = document.createElement('td')
+		var anchor = document.createElement('a');
+		anchor.setAttribute("href", url);
+		anchor.textContent = text;
+		cell.appendChild(anchor);
+	document.querySelector('.green').querySelector('tr').appendChild(cell);
 }
 
 document.querySelector('title').textContent = "Integer Sequences";
@@ -245,6 +251,12 @@ addBox("red");
 addBox("yellow");
 addBox("blue");
 addBox("green");
+
+var linkTable = document.createElement('table');
+linkTable.setAttribute("class", "full-width");
+	var row = document.createElement('tr');
+	linkTable.appendChild(row);
+document.querySelector('.green').appendChild(linkTable);
 
 addAnchor("https://oeis.org/A000045", "The Fibonacci Sequence");
 addAnchor("https://oeis.org/A000129", "The Pell Sequence");
