@@ -231,11 +231,14 @@ var addBox = function (color) {
 	box.setAttribute("class", "stuff-box " + color + " shadowed");
 	document.querySelector('body').appendChild(box);
 }
-	    
+
+document.querySelector('title').textContent = "Integer Sequences";
+
 addBox("red");
 addBox("yellow");
 addBox("blue");
 addBox("green");
+
 fib(11, document.querySelector('.red'));
 pell(11, document.querySelector('.yellow'));
 trib(11, document.querySelector('.blue'));
