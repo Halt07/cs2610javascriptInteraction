@@ -3,6 +3,8 @@ function fibHelper(n) {
 	var div = document.createElement('div');
 	div.setAttribute("class", "fib");
 	
+	n = parseInt(n);
+	
 	// leaf nodes aka. base case
 	if (n < 2) {
 		if (n === 0) {
@@ -40,6 +42,8 @@ function pellHelper(n) {
 	var div = document.createElement('div');
 	div.setAttribute("class", "pell");
 	
+	n = parseInt(n);
+	
 	// leaf nodes aka. base case
 	if (n < 2) {
 		if (n === 0) {
@@ -75,6 +79,8 @@ function tribHelper(n) {
 	var value;
 	var div = document.createElement('div');
 	div.setAttribute("class", "trib");
+	
+	n = parseInt(n);
 	
 	// leaf nodes aka. base case
 	if (n < 3) {
@@ -114,10 +120,27 @@ function tribHelper(n) {
 }
 
 var fib = function (n, node) {
-	var tree = fibHelper(n)
+	var fibTree = node.querySelector('div.fib');
+	if (fibTree){
+		node.removeChild(fibTree);
+	}
+	var tree = fibHelper(n);
 	node.appendChild(tree.html);
 	node.setAttribute("id", "fib");
 }
+
+var fibButton = function(me){
+	var form = me.parentNode;
+	var slider =form.querySelector('input');
+	var value = slider.value;
+	fib(value, form.parentNode);
+}
+var bitSlider = function(me){
+	var form = me.parentNode;
+	var button = form.querySelector('button');
+	button.textContent ='Fib(' + me.value + ')';
+}
+	
 
 var pell = function (n, node) {
 	var tree = pellHelper(n)
@@ -231,12 +254,6 @@ style.textContent = "#fib {"+
         "}";
 document.querySelector('body').appendChild(style);
 
-var addBox = function (color) {
-	var box = document.createElement('div');
-	box.setAttribute("class", "stuff-box " + color + " shadowed");
-	document.querySelector('body').appendChild(box);
-}
-
 var addAnchor = function(url, text) {
 	var cell = document.createElement('td')
 		var anchor = document.createElement('a');
@@ -247,11 +264,6 @@ var addAnchor = function(url, text) {
 }
 
 document.querySelector('title').textContent = "Integer Sequences";
-
-addBox("red");
-addBox("yellow");
-addBox("blue");
-addBox("green");
 
 var linkTable = document.createElement('table');
 linkTable.setAttribute("class", "center");
