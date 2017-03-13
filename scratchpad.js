@@ -274,7 +274,3 @@ document.querySelector('.green').appendChild(linkTable);
 addAnchor("https://oeis.org/A000045", "The Fibonacci Sequence");
 addAnchor("https://oeis.org/A000129", "The Pell Sequence");
 addAnchor("https://oeis.org/A000073", "The Tribonacci Sequence");
-
-fib(11, document.querySelector('.red'));
-pell(11, document.querySelector('.yellow'));
-trib(11, document.querySelector('.blue'));
