@@ -135,6 +135,7 @@ var fibButton = function(me){
 	var value = slider.value;
 	fib(value, form.parentNode);
 }
+
 var fibSlider = function(me){
 	var form = me.parentNode;
 	var button = form.querySelector('button');
@@ -146,6 +147,19 @@ var pell = function (n, node) {
 	var tree = pellHelper(n)
 	node.appendChild(tree.html);
 	node.setAttribute("id", "pell");
+}
+
+var pellButton = function(me){
+	var form = me.parentNode;
+	var slider = form.querySelector('input');
+	var value = slider.value;
+	pell(value, form.parentNode);
+}
+
+var pellSlider = function(me){
+	var form = me.parentNode;
+	var button = form.querySelector('button');
+	button.textContent ='Pell(' + me.value + ')';
 }
 
 var trib = function (n, node) {
