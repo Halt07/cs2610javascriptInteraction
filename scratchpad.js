@@ -144,6 +144,10 @@ var fibSlider = function(me){
 	
 
 var pell = function (n, node) {
+	var pellTree = node.querySelector('div.pell');
+	if (pellTree){
+		node.removeChild(pellTree);
+	}
 	var tree = pellHelper(n)
 	node.appendChild(tree.html);
 	node.setAttribute("id", "pell");
@@ -163,15 +167,32 @@ var pellSlider = function(me){
 }
 
 var trib = function (n, node) {
+	var tribTree = node.querySelector('div.trib');
+	if (tribTree){
+		node.removeChild(tribTree);
+	}
 	var tree = tribHelper(n)
 	node.appendChild(tree.html);
 	node.setAttribute("id", "trib");
 }
 
+var tribButton = function(me){
+	var form = me.parentNode;
+	var slider = form.querySelector('input');
+	var value = slider.value;
+	trib(value, form.parentNode);
+}
+
+var tribSlider = function(me){
+	var form = me.parentNode;
+	var button = form.querySelector('button');
+	button.textContent ='Trib(' + me.value + ')';
+}
+
 var style = document.createElement('style');
 style.textContent = "#fib {"+
 	"	width: 100%;"+
-        "        display: inline-block;"+
+        "       display: inline-block;"+
 	"}"+
 	".fib {"+
 	"	background-color: rgba(255,102,0,0.1);"+
