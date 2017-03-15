@@ -289,23 +289,4 @@ style.textContent = "#fib {"+
         "}";
 document.querySelector('body').appendChild(style);
 
-var addAnchor = function(url, text) {
-	var cell = document.createElement('td')
-		var anchor = document.createElement('a');
-		anchor.setAttribute("href", url);
-		anchor.textContent = text;
-		cell.appendChild(anchor);
-	document.querySelector('.green').querySelector('tr').appendChild(cell);
-}
-
 document.querySelector('title').textContent = "Integer Sequences";
-
-var linkTable = document.createElement('table');
-linkTable.setAttribute("class", "center");
-	var row = document.createElement('tr');
-	linkTable.appendChild(row);
-document.querySelector('.green').appendChild(linkTable);
-
-addAnchor("https://oeis.org/A000045", "The Fibonacci Sequence");
-addAnchor("https://oeis.org/A000129", "The Pell Sequence");
-addAnchor("https://oeis.org/A000073", "The Tribonacci Sequence");
